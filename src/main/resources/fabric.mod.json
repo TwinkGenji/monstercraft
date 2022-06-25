@@ -19,11 +19,11 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.example.ExampleMod"
+      "net.zinotsune.monstercraft.MonsterCraftMod"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "monstercraft.mixins.json"
   ],
 
   "depends": {
