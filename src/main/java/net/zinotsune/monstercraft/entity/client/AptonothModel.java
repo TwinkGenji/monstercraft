@@ -24,7 +24,7 @@ public class AptonothModel extends AnimatedGeoModel<AptonothEntity> {
 	}
 
 	@Override
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@SuppressWarnings("rawtypes")
 	public void setLivingAnimations(AptonothEntity entity, Integer uniqueID, AnimationEvent customPredicate) {
 		super.setLivingAnimations(entity, uniqueID, customPredicate);
 		// TODO: head tracking

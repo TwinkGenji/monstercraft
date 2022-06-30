@@ -11,6 +11,7 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.World;
 import software.bernie.geckolib3.core.IAnimatable;
@@ -21,18 +22,20 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class AptonothEntity extends AnimalEntity implements IAnimatable {
+public class AptonothEntity extends MonsterEntity implements IAnimatable {
 	private AnimationFactory factory = new AnimationFactory(this);
 	private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
 		if (event.isMoving()) {
 			event.getController().setAnimation(new AnimationBuilder().addAnimation("walk"));
+			event.getController().setAnimationSpeed(2);
 			return PlayState.CONTINUE;
 		}
 		event.getController().setAnimation(new AnimationBuilder().addAnimation("idle"));
+		event.getController().setAnimationSpeed(1);
 		return PlayState.CONTINUE;
 	}
 
-	public AptonothEntity(EntityType<? extends AnimalEntity> entityType, World world) {
+	public AptonothEntity(EntityType<? extends MonsterEntity> entityType, World world) {
 		super(entityType, world);
 	}
 
@@ -67,6 +70,33 @@ public class AptonothEntity extends AnimalEntity implements IAnimatable {
 	@Override
 	public AnimationFactory getFactory() {
 		return factory;
+	}
+
+	@Override
+	public float getWildMaxHealth() {
+		return 20;
+	}
+
+	@Override
+	public float getTameMaxHealth() {
+		return 50;
+	}
+
+	@Override
+	public Item getTameItem() {
+		// TODO: Aptonoth Kinship Stone
+		return null;
+	}
+
+	@Override
+	public boolean isTameItem(Item item) {
+		return item.equals(getTameItem());
+	}
+
+	@Override
+	public boolean canBeTamed() {
+		// aptonoth and other tameable small monsters don't require combat first
+		return true;
 	}
 
 	// TODO: sounds
