@@ -12,8 +12,11 @@ import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtElement;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.World;
+import net.zinotsune.monstercraft.MonsterCraftItems;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
@@ -84,8 +87,7 @@ public class AptonothEntity extends MonsterEntity implements IAnimatable {
 
 	@Override
 	public Item getTameItem() {
-		// TODO: Aptonoth Kinship Stone
-		return null;
+		return MonsterCraftItems.KINSHIP_STONE_APTONOTH;
 	}
 
 	@Override

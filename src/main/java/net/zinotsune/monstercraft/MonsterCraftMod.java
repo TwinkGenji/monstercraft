@@ -18,6 +18,7 @@ public class MonsterCraftMod implements ModInitializer {
 		// Proceed with mild caution.
 
 		LOGGER.info("Hello Fabric world!");
+		MonsterCraftItems.registerItems();
 		MonsterCraftEntities.registerEntities();
 	}
 }

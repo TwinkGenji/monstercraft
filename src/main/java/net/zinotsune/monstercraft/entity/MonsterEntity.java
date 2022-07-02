@@ -13,10 +13,13 @@ import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.world.World;
+import net.zinotsune.monstercraft.MonsterCraftMod;
+import net.zinotsune.monstercraft.item.KinshipStoneItem;
 
 public abstract class MonsterEntity extends TameableEntity implements Angerable {
 	@Nullable
@@ -98,6 +101,7 @@ public abstract class MonsterEntity extends TameableEntity implements Angerable 
 				navigation.stop();
 				setTarget(null);
 				//setSitting(true);
+				linkKinshipStone(player, stack);
 				world.sendEntityStatus(this, EntityStatuses.ADD_POSITIVE_PLAYER_REACTION_PARTICLES);
 			} else {
 				world.sendEntityStatus(this, EntityStatuses.ADD_NEGATIVE_PLAYER_REACTION_PARTICLES);
@@ -117,5 +121,14 @@ public abstract class MonsterEntity extends TameableEntity implements Angerable 
 			// TODO: breeding (seriously this code is a mess)
 		}
 		return super.interactMob(player, hand);
+	}
+
+	protected void linkKinshipStone(PlayerEntity player, ItemStack stone) {
+		if (stone.getItem() instanceof KinshipStoneItem) {
+			NbtCompound nbt = stone.getOrCreateNbt();
+			nbt.putUuid("MonstieUUID", getUuid());
+			nbt.putUuid("OwnerUUID", player.getUuid());
+			stone.setNbt(nbt);
+		}
 	}
 }
