@@ -1,0 +1,15 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"XX",
+		"XX"
+	],
+	"key": {
+		"X": {
+			"item": "monstercraft:wyvern_tear"
+		}
+	},
+	"result": {
+		"item": "monstercraft:large_wyvern_tear"
+	}
+}

@@ -27,6 +27,8 @@ public class MonsterCraftItems {
 	// Consumables
 	public static final Item RAW_DINO_MEAT = add("raw_dino_meat", new Item(new FabricItemSettings().food(new FoodComponent.Builder().hunger(3).saturationModifier(1.8f).meat().build()).group(CONSUMABLES)));
 	public static final Item COOKED_DINO_MEAT = add("cooked_dino_meat", new Item(new FabricItemSettings().food(new FoodComponent.Builder().hunger(8).saturationModifier(12.8f).meat().build()).group(CONSUMABLES)));
+	public static final Item HEALTH_HERB = add("health_herb", new Item(new FabricItemSettings().group(CONSUMABLES)));
+	public static final Item ANTIDOTE_HERB = add("antidote_herb", new Item(new FabricItemSettings().group(CONSUMABLES)));
 
 	// Materials (Ores)
 	public static final Item DRAGONVEIN_CRYSTAL = add("dragonvein_crystal", new Item(new FabricItemSettings().group(MATERIALS)));

@@ -1,0 +1,12 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "monstercraft:large_beast_tear"
+		}
+	],
+	"result": {
+		"item": "monstercraft:beast_tear",
+		"count": 4
+	}
+}

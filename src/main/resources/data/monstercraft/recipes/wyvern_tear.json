@@ -1,0 +1,12 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "monstercraft:large_wyvern_tear"
+		}
+	],
+	"result": {
+		"item": "monstercraft:wyvern_tear",
+		"count": 4
+	}
+}

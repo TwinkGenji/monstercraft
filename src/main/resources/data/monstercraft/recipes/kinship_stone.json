@@ -1,0 +1,19 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		" X ",
+		"XOX",
+		" X "
+	],
+	"key": {
+		"X": {
+			"tag": "minecraft:stone_crafting_materials"
+		},
+		"O": {
+			"tag": "monstercraft:large_tears"
+		}
+	},
+	"result": {
+		"item": "monstercraft:kinship_stone"
+	}
+}
