@@ -23,29 +23,27 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class AptonothEntity extends MonsterEntity implements IAnimatable {
+public class FelyneEntity extends MonsterEntity implements IAnimatable {
 	private AnimationFactory factory = new AnimationFactory(this);
 	private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
 		if (event.isMoving()) {
 			event.getController().setAnimation(new AnimationBuilder().addAnimation("walk"));
-			event.getController().setAnimationSpeed(2);
 			return PlayState.CONTINUE;
 		}
-		event.getController().setAnimation(new AnimationBuilder().addAnimation("idle"));
-		event.getController().setAnimationSpeed(1);
+		event.getController().setAnimation(new AnimationBuilder().addAnimation("sit"));
 		return PlayState.CONTINUE;
 	}
 
-	public AptonothEntity(EntityType<? extends MonsterEntity> entityType, World world) {
+	public FelyneEntity(EntityType<? extends MonsterEntity> entityType, World world) {
 		super(entityType, world);
 	}
 
 	public static DefaultAttributeContainer.Builder setAttributes() {
 		return AnimalEntity.createMobAttributes()
 			.add(EntityAttributes.GENERIC_MAX_HEALTH, 20d)
-			.add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 8f)
-			.add(EntityAttributes.GENERIC_ATTACK_SPEED, 2f)
-			.add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.3f);
+			.add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 0f)
+			.add(EntityAttributes.GENERIC_ATTACK_SPEED, 0f)
+			.add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.6f);
 	}
 
 	protected void initGoals() {
@@ -54,7 +52,7 @@ public class AptonothEntity extends MonsterEntity implements IAnimatable {
 		this.goalSelector.add(2, new WanderAroundFarGoal(this, 0.75f, 1));
 		this.goalSelector.add(3, new LookAroundGoal(this));
 		//this.goalSelector.add(4, new LookAtEntityGoal(this, PlayerEntity.class, 8f));
-		// uncomment that once head tracking is added in AptonothModel
+		// uncomment that once head tracking is added in FelyneModel
 	}
 
 	@Override
@@ -65,7 +63,7 @@ public class AptonothEntity extends MonsterEntity implements IAnimatable {
 
 	@Override
 	public void registerControllers(AnimationData animationData) {
-		animationData.addAnimationController(new AnimationController<AptonothEntity>(this, "controller", 0, this::predicate));
+		animationData.addAnimationController(new AnimationController<FelyneEntity>(this, "controller", 0, this::predicate));
 	}
 
 	@Override
@@ -85,7 +83,8 @@ public class AptonothEntity extends MonsterEntity implements IAnimatable {
 
 	@Override
 	public Item getTameItem() {
-		return MonsterCraftItems.KINSHIP_STONE_APTONOTH;
+		// TODO: taming with felvine
+		return null;
 	}
 
 	@Override
@@ -95,7 +94,7 @@ public class AptonothEntity extends MonsterEntity implements IAnimatable {
 
 	@Override
 	public boolean canBeTamed() {
-		// aptonoth and other tameable small monsters don't require combat first
+		// tameable small monsters don't require combat first
 		return true;
 	}
 

@@ -18,7 +18,6 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.world.World;
-import net.zinotsune.monstercraft.MonsterCraftMod;
 import net.zinotsune.monstercraft.item.KinshipStoneItem;
 
 public abstract class MonsterEntity extends TameableEntity implements Angerable {

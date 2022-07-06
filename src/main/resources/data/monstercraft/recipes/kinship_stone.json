@@ -7,7 +7,7 @@
 	],
 	"key": {
 		"X": {
-			"tag": "minecraft:stone_crafting_materials"
+			"item": "minecraft:iron_ingot"
 		},
 		"O": {
 			"tag": "monstercraft:large_tears"

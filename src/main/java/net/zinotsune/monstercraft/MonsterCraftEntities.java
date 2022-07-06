@@ -12,7 +12,7 @@ import net.minecraft.entity.SpawnGroup;
 import net.minecraft.entity.attribute.DefaultAttributeContainer.Builder;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import net.zinotsune.monstercraft.entity.AptonothEntity;
+import net.zinotsune.monstercraft.entity.*;
 
 public class MonsterCraftEntities {
 	private static final Map<Identifier, EntityType<? extends LivingEntity>> ENTITIES = new LinkedHashMap<>();
@@ -21,6 +21,8 @@ public class MonsterCraftEntities {
 	// TODO: add dimensions elsewhere to more properly support parts
 	public static final EntityType<AptonothEntity> APTONOTH = add("aptonoth", FabricEntityTypeBuilder.create(
 		SpawnGroup.CREATURE, AptonothEntity::new).dimensions(EntityDimensions.fixed(2.5f, 3f)).build(), AptonothEntity.setAttributes());
+		public static final EntityType<FelyneEntity> FELYNE = add("felyne", FabricEntityTypeBuilder.create(
+			SpawnGroup.CREATURE, FelyneEntity::new).dimensions(EntityDimensions.fixed(2.5f, 3f)).build(), FelyneEntity.setAttributes());
 
 	private static <E extends EntityType<? extends LivingEntity>> E add(String name, E entity, Builder builder) {
 		ENTITIES.put(new Identifier(MonsterCraftMod.MOD_ID, name), entity);

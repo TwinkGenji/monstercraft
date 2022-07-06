@@ -39,10 +39,11 @@ public class KinshipStoneItem extends Item {
 
 	@Override
 	public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-		if (world.isClient())
-			return TypedActionResult.consume(user.getStackInHand(hand));
-		ServerWorld server = (ServerWorld) world;
 		NbtCompound nbt = user.getStackInHand(hand).getOrCreateNbt();
+		// return early if the stone is unused or doesn't belong to its holder
+		if ((!nbt.containsUuid("OwnerUUID") || !nbt.getUuid("OwnerUUID").equals(user.getUuid()))) return TypedActionResult.fail(user.getStackInHand(hand));
+		if (world.isClient()) return TypedActionResult.consume(user.getStackInHand(hand));
+		ServerWorld server = (ServerWorld) world;
 		if (nbt.containsUuid("OwnerUUID")  && nbt.getUuid("OwnerUUID").equals(user.getUuid())) {
 			if (monstie == null) {
 				monstie = (MonsterEntity)server.getEntity(nbt.getUuid("MonstieUUID"));
